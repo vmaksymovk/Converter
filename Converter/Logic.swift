@@ -74,6 +74,46 @@ func convertValue(_ value: Double, from firstUnit: firstListOfValues, to secondU
     case (.Millimeters, .Millimeters):
         return value
     default:
-        return 0 // Handle other cases or .none
+        return 0 
+    }
+}
+
+func convertTemperatureValue(_ value: Double, from firstUnit: TemperatureUnitForFisrstList, to secondUnit: TemperatureUnitForSecondList) -> Double {
+    
+    switch (firstUnit, secondUnit) {
+    case (.Celsius, .Celsius):
+        return value
+    case (.Celsius, .Fahrenheit):
+        return (value * 9/5) + 32
+    case (.Celsius, .Kelvin):
+        return value + 273.15
+    case (.Celsius, .Rankine):
+        return (value + 273.15) * 9/5
+    case (.Fahrenheit, .Celsius):
+        return (value - 32) * 5/9
+    case (.Fahrenheit, .Fahrenheit):
+        return value
+    case (.Fahrenheit, .Kelvin):
+        return (value + 459.67) * 5/9
+    case (.Fahrenheit, .Rankine):
+        return value + 459.67
+    case (.Kelvin, .Celsius):
+        return value - 273.15
+    case (.Kelvin, .Fahrenheit):
+        return (value * 9/5) - 459.67
+    case (.Kelvin, .Kelvin):
+        return value
+    case (.Kelvin, .Rankine):
+        return value * 1.8
+    case (.Rankine, .Celsius):
+        return (value - 491.67) * 5/9
+    case (.Rankine, .Fahrenheit):
+        return value - 459.67
+    case (.Rankine, .Kelvin):
+        return value * 5/9
+    case (.Rankine, .Rankine):
+        return value
+    default:
+        return 0
     }
 }
