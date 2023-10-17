@@ -1,20 +1,43 @@
 // Logic.swift
 
 import Foundation
-
+//Category
+enum Category: String, CaseIterable, Identifiable {
+    case Distance, Temperature
+    var id: Self {
+        self
+    }
+}
+//Distance
 enum firstListOfValues: String, CaseIterable, Identifiable {
     case Kilometers, Meters, Centimeters, Millimeters, none
     var id: Self {
         self
     }
 }
-
+//Distance
 enum secondListOfValues: String, CaseIterable, Identifiable {
     case Kilometers, Meters, Centimeters, Millimeters, none
     var id: Self {
         self
     }
 }
+//Temper
+enum TemperatureUnitForFisrstList: String, CaseIterable, Identifiable {
+    case Celsius, Fahrenheit, Kelvin, Rankine, none
+    var id: Self {
+        self
+    }
+}
+//Temper
+enum TemperatureUnitForSecondList: String, CaseIterable, Identifiable {
+    case Celsius, Fahrenheit, Kelvin, Rankine, none
+    var id: Self {
+        self
+    }
+}
+
+
 
 func convertValue(_ value: Double, from firstUnit: firstListOfValues, to secondUnit: secondListOfValues) -> Double {
     switch (firstUnit, secondUnit) {
